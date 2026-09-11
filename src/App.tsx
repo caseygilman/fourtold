@@ -18,32 +18,36 @@ function App() {
     return () => clearTimeout(timer)
   }, [step])
 
-  if (step < launchMessages.length) {
-    return (
-      <main className="launch-screen">
-        <p key={step} className="launch-message">
-          {launchMessages[step]}
-        </p>
-      </main>
-    )
-  }
-
-  if (step === launchMessages.length) {
-    return (
-      <main className="launch-screen">
-        <div key={step} className="launch-brand">
-          <h1>FOUR†OLD</h1>
-          <p>Live today in light of what is to come.</p>
-        </div>
-      </main>
-    )
-  }
+  const showingMessages = step < launchMessages.length
+  const showingBrand = step >= launchMessages.length
+  const showingNav = step > launchMessages.length
 
   return (
     <main className="app">
-      <h1>FOUR†OLD</h1>
-      <p>Faith · Fitness · Finance · Family</p>
-      <p>Live faithfully today in light of what is to come.</p>
+      <nav className={`main-nav ${showingNav ? 'is-visible' : ''}`}>
+        <a href="#faith">Faith</a>
+        <a href="#fitness">Fitness</a>
+        <a href="#finance">Finance</a>
+        <a href="#family">Family</a>
+      </nav>
+
+      <div className="hero">
+        <div className={`brand-logo ${showingBrand ? 'is-visible' : ''}`}>
+          <span className="brand-letter">FOUR</span>
+          <span className="brand-cross">†</span>
+          <span className="brand-letter">OLD</span>
+        </div>
+
+        <p className={`hero-tagline ${showingBrand ? 'is-visible' : ''}`}>
+          Live faithfully today in light of what is to come.
+        </p>
+      </div>
+
+      {showingMessages && (
+        <p key={step} className="launch-message">
+          {launchMessages[step]}
+        </p>
+      )}
     </main>
   )
 }
