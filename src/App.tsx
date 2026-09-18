@@ -1,4 +1,8 @@
 import { useEffect, useState } from 'react'
+import { Routes, Route } from 'react-router-dom'
+import Navigation from './components/Navigation'
+import Faith from './pages/Faith'
+import Today from './pages/Today'
 import './App.css'
 
 const launchMessages = [
@@ -7,7 +11,7 @@ const launchMessages = [
   'YOUR WORKS ARE MEANT SOLELY TO GLORIFY HIM.',
 ]
 
-function App() {
+function Home() {
   const [step, setStep] = useState(0)
 
   useEffect(() => {
@@ -20,16 +24,9 @@ function App() {
 
   const showingMessages = step < launchMessages.length
   const showingBrand = step >= launchMessages.length
-  const showingNav = step > launchMessages.length
 
   return (
     <main className="app">
-      <nav className={`main-nav ${showingNav ? 'is-visible' : ''}`}>
-        <a href="#faith">Faith</a>
-        <a href="#fitness">Fitness</a>
-        <a href="#finance">Finance</a>
-        <a href="#family">Family</a>
-      </nav>
 
       <div className="hero">
         <div className={`brand-logo ${showingBrand ? 'is-visible' : ''}`}>
@@ -49,6 +46,20 @@ function App() {
         </p>
       )}
     </main>
+  )
+}
+
+function App() {
+  return (
+    <>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/today" element={<Today />} />
+        <Route path="/faith" element={<Faith />} />
+      </Routes>
+
+      <Navigation />
+    </>
   )
 }
 
