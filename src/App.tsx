@@ -1,5 +1,9 @@
 import { useEffect, useState } from 'react'
-import { Routes, Route } from 'react-router-dom'
+import {
+  Routes,
+  Route,
+  useNavigate,
+} from 'react-router-dom'
 
 import Navigation from './components/Navigation'
 
@@ -18,17 +22,35 @@ const launchMessages = [
 ]
 
 function Home() {
+  const navigate = useNavigate()
+
   const [step, setStep] = useState(0)
+  const [brandVisible, setBrandVisible] = useState(false)
 
   useEffect(() => {
-    if (step >= launchMessages.length) return
+    if (step < launchMessages.length) {
+      const timer = setTimeout(() => {
+        setStep((current) => current + 1)
+      }, 2500)
 
-    const timer = setTimeout(() => {
-      setStep((current) => current + 1)
+      return () => clearTimeout(timer)
+    }
+
+    setBrandVisible(true)
+
+    const fadeOutTimer = setTimeout(() => {
+      setBrandVisible(false)
     }, 2500)
 
-    return () => clearTimeout(timer)
-  }, [step])
+    const navigateTimer = setTimeout(() => {
+      navigate('/today', { replace: true })
+    }, 3700)
+
+    return () => {
+      clearTimeout(fadeOutTimer)
+      clearTimeout(navigateTimer)
+    }
+  }, [step, navigate])
 
   const showingMessages = step < launchMessages.length
   const showingBrand = step >= launchMessages.length
@@ -38,7 +60,9 @@ function Home() {
       <div className="hero">
         <div
           className={`brand-logo ${
-            showingBrand ? 'is-visible' : ''
+            showingBrand && brandVisible
+              ? 'is-visible'
+              : ''
           }`}
         >
           <span className="brand-letter">FOUR</span>
@@ -48,7 +72,9 @@ function Home() {
 
         <p
           className={`hero-tagline ${
-            showingBrand ? 'is-visible' : ''
+            showingBrand && brandVisible
+              ? 'is-visible'
+              : ''
           }`}
         >
           Live faithfully today in light of what is to come.
@@ -72,7 +98,6 @@ function App() {
     <>
       <Routes>
         <Route path="/" element={<Home />} />
-
         <Route path="/today" element={<Today />} />
 
         <Route path="/faith" element={<Faith />} />

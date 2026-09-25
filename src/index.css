@@ -1,15 +1,44 @@
 html {
+  width: 100%;
+  min-height: 100%;
   background: #000;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
+  width: 100%;
   min-height: 100vh;
   background: #000;
+  overflow-x: hidden;
 }
 
 #root {
   width: 100%;
   min-height: 100vh;
+  overflow-x: hidden;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+textarea,
+select,
+button {
+  font: inherit;
+}
+
+/*
+  Prevent iOS Safari from automatically zooming
+  when a form field receives focus.
+*/
+input,
+textarea,
+select {
+  font-size: 16px;
 }
