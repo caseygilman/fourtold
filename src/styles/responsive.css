@@ -1,0 +1,63 @@
+/* ==========================================================================
+   Tablet + Progressive enhancement from the mobile-first base.
+   ========================================================================== */
+
+@media (min-width: 601px) {
+  :root {
+    --nav-height: 5rem;
+  }
+
+  .brand-logo {
+    font-size: var(--text-display);
+  }
+
+  .pillar-page {
+    padding: clamp(3.5rem, 9vw, 7rem) var(--space-page) calc(var(--nav-height) + 3.5rem);
+  }
+
+  .pillar-page > h1 {
+    font-size: var(--text-display);
+  }
+
+  .today-page > h1 {
+    max-width: 44rem;
+    font-size: clamp(2.5rem, 1.75rem + 3vw, 4.5rem);
+    line-height: 0.98;
+  }
+
+  .main-nav {
+    bottom: max(1rem, env(safe-area-inset-bottom));
+    padding-inline: 0.65rem;
+  }
+
+  .main-nav a {
+    font-size: var(--text-xs);
+    letter-spacing: 0.07em;
+  }
+
+  .crosses li > div {
+    flex-wrap: nowrap;
+  }
+
+  .onboarding-hint {
+    bottom: calc(var(--nav-height) + max(2rem, env(safe-area-inset-bottom)));
+    width: min(calc(100% - 2rem), 24rem);
+  }
+
+  .onboarding-add-hint {
+    max-width: 24rem;
+  }
+
+  .cross-choice {
+    padding-block: 1.05rem;
+  }
+
+  .cross-choice .cross-mark {
+    width: 1.55rem;
+    height: 1.55rem;
+  }
+
+  .walk-message-transition {
+    min-height: clamp(3.4rem, 6vw, 4.5rem);
+  }
+}

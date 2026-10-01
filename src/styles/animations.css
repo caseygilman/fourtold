@@ -1,0 +1,101 @@
+/* ==========================================================================
+   State Transitions
+   ========================================================================== */
+
+.state-transition {
+  --state-transition-duration: 260ms;
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity var( --state-transition-duration ) ease, transform var( --state-transition-duration ) ease;
+  will-change: opacity, transform;
+}
+
+.state-transition.is-leaving {
+  opacity: 0;
+  transform: translateY(-5px);
+}
+
+.state-transition.is-entering {
+  opacity: 0;
+  transform: translateY(5px);
+}
+
+.walk-message-transition {
+  min-height: 4rem;
+}
+
+.progress-transition {
+  min-height: 1.6rem;
+}
+
+.progress-transition .walk-progress {
+  margin: 0;
+}
+
+.add-walk-transition {
+  margin-top: 1.5rem;
+}
+
+.add-walk-transition > .add-to-walk-button {
+  margin-top: 0;
+}
+
+.completion-transition {
+  margin-top: 0;
+}
+
+.completion-placeholder {
+  width: 100%;
+  height: 0;
+}
+
+/* ==========================================================================
+   General Animation
+   ========================================================================== */
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+  }
+
+  18% {
+    opacity: 1;
+  }
+
+  68% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Reduced Motion
+   ========================================================================== */
+
+@media ( prefers-reduced-motion: reduce ) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .state-transition {
+    transform: none !important;
+  }
+}

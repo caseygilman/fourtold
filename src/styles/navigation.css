@@ -1,0 +1,137 @@
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+
+.main-nav {
+  position: fixed;
+  left: 50%;
+  bottom: max(0.65rem, env(safe-area-inset-bottom));
+  z-index: 10;
+  display: grid;
+  grid-template-columns: repeat( 5, minmax( 0, 1fr ) );
+  align-items: center;
+  width: calc(100% - (var(--app-gutter) * 2));
+  max-width: calc(var(--app-max-width) - (var(--app-gutter) * 2));
+  min-height: var(--nav-height);
+  padding: 0.55rem 0.3rem;
+  transform: translateX(-50%) translateY(10px);
+  background: rgba( 10, 10, 10, 0.94 );
+  border: 1px solid var(--line);
+  opacity: 0;
+  transition: opacity 0.8s ease, transform 0.8s ease;
+  pointer-events: none;
+}
+
+.main-nav.is-visible {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+
+.main-nav a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  padding: 0.4rem 0.25rem;
+  color: var(--dim);
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: clamp(0.58rem, 2.5vw, 0.7rem);
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.035em;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+.main-nav a:hover, .main-nav a.active {
+  color: var(--white);
+}
+
+/* ==========================================================================
+   Pillar Navigation State
+   ========================================================================== */
+
+.pillar-nav-content {
+  display: inline-grid;
+  grid-template-columns: auto 0.75em;
+  align-items: center;
+  column-gap: 0.25em;
+  line-height: 1;
+}
+
+.main-nav .pillar-needs-cross {
+  color: var(--dim);
+  opacity: 0.55;
+}
+
+.pillar-add-indicator {
+  position: relative;
+  top: -0.12em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 0.75em;
+  height: 1em;
+  font-size: 0.9em;
+  font-weight: 400;
+  line-height: 1;
+  text-align: center;
+  opacity: 0.65;
+  transition: opacity 0.35s ease;
+}
+
+.pillar-add-indicator.is-complete {
+  opacity: 0;
+}
+
+/* ==========================================================================
+   Today Navigation
+   ========================================================================== */
+
+.main-nav .today-nav {
+  justify-self: center;
+  width: clamp( 2.8rem, 10vw, 3.4rem );
+  height: clamp( 2.8rem, 10vw, 3.4rem );
+  min-height: 0;
+  margin: 0 0.25rem;
+  color: var(--white);
+  border: 1px solid var(--line-strong);
+  border-radius: 50%;
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: clamp( 1.45rem, 4vw, 1.85rem );
+  font-weight: 400;
+  line-height: 1;
+}
+
+.main-nav .today-nav.active {
+  color: var(--white);
+  background: var(--surface-raised);
+  border-color: rgba( 243, 241, 235, 0.45 );
+}
+
+.main-nav .today-nav.today-disabled {
+  color: var(--dim);
+  border-color: var(--line);
+  opacity: 0.4;
+  cursor: default;
+  pointer-events: none;
+}
+
+.main-nav .today-nav.today-ready:not( .active ) {
+  animation: crossBreath 3.5s ease-in-out infinite;
+}
+
+@keyframes crossBreath {
+  0%, 100% {
+    color: var(--muted);
+    border-color: var(--line-strong);
+  }
+
+  50% {
+    color: var(--white);
+    border-color: rgba( 243, 241, 235, 0.65 );
+  }
+}

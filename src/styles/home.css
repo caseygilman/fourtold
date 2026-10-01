@@ -1,0 +1,74 @@
+/* ==========================================================================
+   HOME
+   ========================================================================== */
+
+.home-page {
+  min-height: 100dvh;
+  display: flex;
+  justify-content: center;
+  padding: 118px 24px 130px;
+}
+
+.home-content {
+  width: min(100%, 560px);
+}
+
+.home-eyebrow {
+  margin: 0 0 22px;
+  color: rgba(255, 255, 255, 0.42);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+}
+
+.home-title {
+  max-width: 480px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.94);
+  font-size: clamp( 2.15rem, 8vw, 3.5rem );
+  font-weight: 400;
+  line-height: 1.06;
+  letter-spacing: -0.035em;
+}
+
+.home-intro {
+  margin: 22px 0 0;
+  color: rgba(255, 255, 255, 0.46);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.home-rule {
+  width: 38px;
+  height: 1px;
+  margin: 38px 0;
+  background: rgba( 255, 255, 255, 0.18 );
+}
+
+.home-prompt {
+  max-width: 340px;
+  margin: 0;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.home-primary-action {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 38px;
+  color: rgba(255, 255, 255, 0.88);
+  text-decoration: none;
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition: color 180ms ease, gap 180ms ease;
+}
+
+.home-primary-action:hover {
+  gap: 19px;
+  color: #fff;
+}

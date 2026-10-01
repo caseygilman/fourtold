@@ -17,6 +17,7 @@ import Finance from './pages/Finance'
 import Family from './pages/Family'
 import Journal from './pages/Journal'
 
+import './App.css'
 
 const launchMessages = [
   'YOU ARE NOT SAVED BY YOUR WORKS.',

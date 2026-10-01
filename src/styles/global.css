@@ -1,0 +1,113 @@
+/* ==========================================================================
+   Foundation
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  width: 100%;
+  min-height: 100%;
+  background: var(--black);
+}
+
+html, body {
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--white);
+  font-size: var(--text-base);
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+/* Prevent iOS Safari from zooming when a form control receives focus. */
+input, textarea, select {
+  font-size: 16px;
+}
+
+/* ==========================================================================
+   Inputs
+   ========================================================================== */
+
+.crosses input[type="text"], .new-cross-entry input[type="text"], .gratitude-entry textarea {
+  width: 100%;
+  min-width: 0;
+  padding: 0.95rem 1rem;
+  color: var(--white);
+  background: var(--surface);
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  outline: none;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.crosses input[type="text"]:focus, .new-cross-entry input[type="text"]:focus, .gratitude-entry textarea:focus {
+  background: var(--surface-raised);
+  border-color: rgba( 243, 241, 235, 0.55 );
+}
+
+.gratitude-entry textarea {
+  resize: vertical;
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Buttons
+   ========================================================================== */
+
+button {
+  min-height: 44px;
+  padding: 0.75rem 1.15rem;
+  color: var(--white);
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  border-radius: 0;
+  cursor: pointer;
+  font-size: var(--text-sm);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  transition: background 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+button:hover {
+  background: var(--surface-raised);
+  border-color: rgba( 243, 241, 235, 0.4 );
+}
+
+button:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.crosses > button, .todays-crosses > button {
+  margin-top: 1.5rem;
+}
+
+.crosses li button {
+  flex: 0 0 auto;
+  min-height: auto;
+  padding: 0.4rem 0.55rem;
+  color: var(--dim);
+  border: 0;
+  font-size: var(--text-xs);
+  letter-spacing: 0.04em;
+}
+
+.crosses li button:hover {
+  color: var(--white);
+  background: transparent;
+}

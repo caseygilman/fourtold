@@ -1,0 +1,29 @@
+/* ==========================================================================
+   FOUR†OLD Visual System
+   ========================================================================== */
+
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  color: #f3f1eb;
+  background: #050505;
+  --text-xs: clamp( 0.68rem, 0.64rem + 0.18vw, 0.8rem );
+  --text-sm: clamp( 0.78rem, 0.73rem + 0.24vw, 0.92rem );
+  --text-base: clamp( 1rem, 0.93rem + 0.3vw, 1.16rem );
+  --text-lg: clamp( 1.12rem, 1rem + 0.55vw, 1.45rem );
+  --text-xl: clamp( 1.45rem, 1.18rem + 1.2vw, 2.15rem );
+  --text-display: clamp( 2.5rem, 1.55rem + 4.2vw, 5.75rem );
+  --space-page: clamp( 1.25rem, 3.5vw, 3.5rem );
+  --space-section: clamp( 2rem, 5vw, 4.5rem );
+  --black: #050505;
+  --surface: #0c0c0c;
+  --surface-raised: #121212;
+  --white: #f3f1eb;
+  --muted: #97958f;
+  --dim: #64625e;
+  --line: rgba( 243, 241, 235, 0.12 );
+  --line-strong: rgba( 243, 241, 235, 0.22 );
+  /* Shared application geometry */
+  --app-max-width: 48rem;
+  --app-gutter: clamp(1.25rem, 4vw, 1.5rem);
+  --nav-height: 4.5rem;
+}

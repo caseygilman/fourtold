@@ -634,6 +634,9 @@ function Today() {
   ) {
     return (
       <main className="pillar-page today-page">
+        <p className="pillar-label">
+          FOUR†OLD
+        </p>
 
         <h1>
           TAKE UP YOUR CROSS
@@ -781,6 +784,9 @@ function Today() {
   ) {
     return (
       <main className="pillar-page today-page">
+        <p className="pillar-label">
+          FOUR†OLD
+        </p>
 
         <h1>
           ADD TO TODAY'S WALK?
@@ -891,6 +897,9 @@ function Today() {
 
   return (
     <main className="pillar-page today-page">
+      <p className="pillar-label">
+        FOUR†OLD
+      </p>
 
       <h1>
         TODAY'S WALK

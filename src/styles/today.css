@@ -1,0 +1,351 @@
+/* ==========================================================================
+   Daily Walk Pillars
+   ========================================================================== */
+
+.walk-pillar {
+  margin-top: clamp( 2rem, 5vw, 3.5rem );
+}
+
+.walk-pillar > h2 {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.walk-pillar label {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-width: 0;
+  padding: 1.05rem 0;
+  cursor: pointer;
+}
+
+.walk-pillar label span {
+  min-width: 0;
+  font-size: var(--text-base);
+  overflow-wrap: anywhere;
+}
+
+.walk-pillar input[type="checkbox"] {
+  flex: 0 0 auto;
+  width: 1.15rem;
+  height: 1.15rem;
+  margin: 0;
+  accent-color: var(--white);
+}
+
+/* ==========================================================================
+   Today Page
+   ========================================================================== */
+
+.today-page {
+  width: min( 100%, 52rem );
+}
+
+.today-page > h1 {
+  max-width: 100%;
+  font-size: clamp(2.35rem, 10vw, 3.35rem);
+  line-height: 1;
+  letter-spacing: -0.04em;
+}
+
+/* ==========================================================================
+   Today Instructions
+   ========================================================================== */
+
+.today-page > .today-instruction {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  max-width: 36rem;
+  margin-top: clamp( 1.25rem, 3vw, 1.75rem );
+  color: var(--muted);
+  font-size: var(--text-base);
+  line-height: 1.55;
+}
+
+.today-instruction span {
+  color: var(--dim);
+  font-size: var(--text-sm);
+}
+
+.today-walk-message {
+  max-width: 36rem;
+  margin: clamp( 1.25rem, 3vw, 1.75rem ) 0 0;
+  color: var(--muted);
+  font-size: var(--text-base);
+  line-height: 1.55;
+}
+
+/* ==========================================================================
+   Today Selection Pillars
+   ========================================================================== */
+
+.today-page > .walk-pillar {
+  margin-top: var(--space-section);
+  padding-top: clamp( 1.5rem, 3vw, 2.25rem );
+  border-top: 1px solid var(--line);
+}
+
+.today-page > .walk-pillar > h2 {
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid var(--line-strong);
+}
+
+.today-page .walk-pillar ul {
+  margin-top: 0;
+}
+
+.today-page .walk-pillar li {
+  border-bottom: 1px solid var(--line);
+}
+
+/* ==========================================================================
+   Today Cross Choice
+   ========================================================================== */
+
+.cross-choice {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: 100%;
+  min-height: 0;
+  padding: 1rem 0;
+  color: var(--muted);
+  background: transparent;
+  border: 0;
+  text-align: left;
+  font-size: var(--text-base);
+  font-weight: 400;
+  letter-spacing: 0;
+  transition: color 0.25s ease, background 0.25s ease;
+}
+
+.cross-choice:hover {
+  color: var(--white);
+  background: transparent;
+  border-color: transparent;
+}
+
+/* ==========================================================================
+   Cross Selection Control
+   ========================================================================== */
+
+.cross-choice .cross-mark {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+  width: 1.45rem;
+  height: 1.45rem;
+  padding: 0 0 0.08em 0.02em;
+  color: transparent;
+  background: transparent;
+  border: 1px solid var(--line-strong);
+  font-family: "Times New Roman", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1;
+  transition: color 0.25s ease, background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+}
+
+.cross-choice .cross-name {
+  min-width: 0;
+  overflow-wrap: anywhere;
+  transition: color 0.25s ease, opacity 0.25s ease;
+}
+
+/* ==========================================================================
+   Cross Selected State
+   ========================================================================== */
+
+.cross-choice.is-selected {
+  color: var(--white);
+}
+
+.cross-choice.is-selected .cross-mark {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white);
+  transform: scale(1.04);
+}
+
+.cross-choice.is-selected .cross-name {
+  color: var(--white);
+}
+
+/* ==========================================================================
+   Carried State
+   ========================================================================== */
+
+.cross-choice.is-carried {
+  color: var(--white);
+}
+
+.cross-choice.is-carried .cross-mark {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white);
+}
+
+.cross-choice.is-carried .cross-name {
+  color: var(--muted);
+  opacity: 0.72;
+}
+
+/* ==========================================================================
+   Accessible Focus
+   ========================================================================== */
+
+.cross-choice:focus {
+  outline: none;
+}
+
+.cross-choice:focus-visible {
+  outline: 1px solid rgba( 243, 241, 235, 0.6 );
+  outline-offset: 3px;
+}
+
+/* ==========================================================================
+   Begin Walk
+   ========================================================================== */
+
+.begin-walk-button {
+  margin-top: clamp( 1.75rem, 4vw, 2.5rem );
+  padding: 0.85rem 1.15rem;
+  border-color: var(--line-strong);
+}
+
+.begin-walk-button:not( :disabled ) {
+  border-color: rgba( 243, 241, 235, 0.48 );
+  animation: beginWalkReady 2.8s ease-in-out infinite;
+}
+
+@keyframes beginWalkReady {
+  0%, 100% {
+    border-color: rgba( 243, 241, 235, 0.28 );
+  }
+
+  50% {
+    border-color: rgba( 243, 241, 235, 0.7 );
+  }
+}
+
+/* ==========================================================================
+   Add to Walk
+   ========================================================================== */
+
+.add-to-walk {
+  padding-top: clamp( 1.25rem, 3vw, 2rem );
+  border-top: 1px solid var(--line);
+}
+
+.add-to-walk-heading h2 {
+  margin: 0;
+  color: var(--dim);
+  font-size: var(--text-xs);
+  font-weight: 650;
+  letter-spacing: 0.18em;
+}
+
+.add-to-walk-heading p {
+  margin: 0.65rem 0 0;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.add-to-walk-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.create-cross-button {
+  margin-top: 1.25rem;
+}
+
+.pillar-picker {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  margin-top: 1.5rem;
+}
+
+.pillar-picker button.is-selected {
+  color: var(--black);
+  background: var(--white);
+  border-color: var(--white);
+}
+
+.new-cross-entry {
+  margin-top: 1.5rem;
+}
+
+.new-cross-entry label {
+  display: block;
+  margin-bottom: 0.65rem;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+/* ==========================================================================
+   Walk Complete
+   ========================================================================== */
+
+.walk-complete {
+  margin-top: var(--space-section);
+  padding: clamp( 2rem, 5vw, 3.5rem ) 0;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.walk-complete > h2 {
+  margin: 0;
+  font-size: var(--text-xl);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+}
+
+.walk-complete > p {
+  max-width: 30rem;
+  margin: 1rem auto 0;
+  color: var(--muted);
+  font-size: var(--text-sm);
+}
+
+.walk-complete > button {
+  margin-top: 2rem;
+  padding-inline: 1.5rem;
+}
+
+.gratitude-entry, .gratitude-saved {
+  max-width: 36rem;
+  margin: 2.5rem auto 0;
+  text-align: left;
+}
+
+.gratitude-entry h3, .gratitude-saved h3 {
+  margin: 0 0 0.75rem;
+  color: var(--dim);
+  font-size: var(--text-xs);
+  letter-spacing: 0.18em;
+}
+
+.gratitude-entry > p, .gratitude-saved > p {
+  color: var(--muted);
+}
+
+.gratitude-entry textarea {
+  margin-top: 1rem;
+}
+
+.gratitude-entry > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 0.75rem;
+}

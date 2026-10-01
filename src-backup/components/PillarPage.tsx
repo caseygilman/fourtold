@@ -214,6 +214,9 @@ function PillarPage({
 
   return (
     <main className="pillar-page">
+      <p className="pillar-label">
+        FOUR†OLD
+      </p>
 
       <h1>{title}</h1>
 
