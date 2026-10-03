@@ -98,13 +98,17 @@ function Launch() {
 
 function AppLayout() {
   return (
-    <>
+    <div className="app-shell">
       <AppHeader />
 
-      <Outlet />
+      <main className="app-content">
+        <Outlet />
+      </main>
 
-      <Navigation />
-    </>
+      <div className="app-nav-region">
+        <Navigation />
+      </div>
+    </div>
   )
 }
 

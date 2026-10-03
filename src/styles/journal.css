@@ -1,0 +1,28 @@
+/* =========================================
+   JOURNAL
+   ========================================= */
+
+.journal-page {
+  width: 100%;
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 46px 24px;
+  box-sizing: border-box;
+}
+
+.journal-header {
+  margin-bottom: 48px;
+}
+
+.journal-page h1 {
+  margin: 0 0 18px;
+}
+
+.journal-page > p {
+  margin: 0;
+}
+
+.journal-entry {
+  padding: 28px 0;
+  border-top: 1px solid var(--line);
+}

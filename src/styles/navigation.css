@@ -3,18 +3,16 @@
    ========================================================================== */
 
 .main-nav {
-  position: fixed;
-  left: 50%;
-  bottom: max(0.65rem, env(safe-area-inset-bottom));
+  position: relative;
   z-index: 10;
   display: grid;
   grid-template-columns: repeat( 5, minmax( 0, 1fr ) );
   align-items: center;
-  width: calc(100% - (var(--app-gutter) * 2));
+  width: 100%;
   max-width: calc(var(--app-max-width) - (var(--app-gutter) * 2));
   min-height: var(--nav-height);
   padding: 0.55rem 0.3rem;
-  transform: translateX(-50%) translateY(10px);
+  transform: translateY(10px);
   background: rgba( 10, 10, 10, 0.94 );
   border: 1px solid var(--line);
   opacity: 0;
@@ -24,7 +22,7 @@
 
 .main-nav.is-visible {
   opacity: 1;
-  transform: translateX(-50%) translateY(0);
+  transform: translateY(0);
   pointer-events: auto;
 }
 

@@ -2,6 +2,7 @@
 @import './tokens.css';
 @import './global.css';
 @import './animations.css';
+@import './layout.css';
 @import './launch.css';
 @import './pillars.css';
 @import './today.css';
@@ -9,4 +10,5 @@
 @import './onboarding.css';
 @import './header.css';
 @import './home.css';
+@import './journal.css';
 @import './responsive.css';
