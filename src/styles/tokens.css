@@ -1,29 +1,212 @@
 /* ==========================================================================
-   FOUR†OLD Visual System
+   FOURTOLD Visual System
    ========================================================================== */
 
 :root {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
-  color: #f3f1eb;
-  background: #050505;
-  --text-xs: clamp( 0.68rem, 0.64rem + 0.18vw, 0.8rem );
-  --text-sm: clamp( 0.78rem, 0.73rem + 0.24vw, 0.92rem );
-  --text-base: clamp( 1rem, 0.93rem + 0.3vw, 1.16rem );
-  --text-lg: clamp( 1.12rem, 1rem + 0.55vw, 1.45rem );
-  --text-xl: clamp( 1.45rem, 1.18rem + 1.2vw, 2.15rem );
-  --text-display: clamp( 2.5rem, 1.55rem + 4.2vw, 5.75rem );
-  --space-page: clamp( 1.25rem, 3.5vw, 3.5rem );
-  --space-section: clamp( 2rem, 5vw, 4.5rem );
-  --black: #050505;
-  --surface: #0c0c0c;
-  --surface-raised: #121212;
-  --white: #f3f1eb;
-  --muted: #97958f;
-  --dim: #64625e;
-  --line: rgba( 243, 241, 235, 0.12 );
-  --line-strong: rgba( 243, 241, 235, 0.22 );
-  /* Shared application geometry */
+  /* ------------------------------------------------------------------------
+     Font families
+     ------------------------------------------------------------------------ */
+
+  --font-sans:
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Helvetica,
+    Arial,
+    sans-serif;
+
+  --font-scripture:
+    Georgia,
+    "Times New Roman",
+    serif;
+
+  font-family: var(--font-sans);
+
+
+  /* ------------------------------------------------------------------------
+     Core palette
+     ------------------------------------------------------------------------ */
+
+  /* Deep charcoal foundation */
+  --black: #080807;
+  --surface: #0f0f0e;
+  --surface-raised: #161513;
+
+  /* Warm soft white — primary reading/content color */
+  --white: #f1eee6;
+
+  /* Supporting text */
+  --muted: #aaa69d;
+  --dim: #7e7a72;
+
+  /* FOURTOLD bronze — identity, interaction and emphasis */
+ --bronze: #c3ad83;
+--bronze-bright: #d1bd94;
+--bronze-muted: #8f8779;
+
+  /* Borders and dividers */
+  --line: rgba(241, 238, 230, 0.12);
+  --line-strong: rgba(241, 238, 230, 0.22);
+
+
+  /* ------------------------------------------------------------------------
+     Type scale
+
+     These are physical sizes only.
+     Semantic roles below determine how those sizes are used.
+     ------------------------------------------------------------------------ */
+
+  --text-xs:
+    clamp(0.68rem, 0.64rem + 0.18vw, 0.8rem);
+
+  --text-sm:
+    clamp(0.78rem, 0.73rem + 0.24vw, 0.92rem);
+
+  --text-base:
+    clamp(1rem, 0.93rem + 0.3vw, 1.16rem);
+
+  --text-lg:
+    clamp(1.12rem, 1rem + 0.55vw, 1.45rem);
+
+  --text-xl:
+    clamp(1.45rem, 1.18rem + 1.2vw, 2.15rem);
+
+  --text-display:
+    clamp(2.4rem, 1.85rem + 2.5vw, 4rem);
+
+
+  /* ------------------------------------------------------------------------
+     Semantic typography
+     ------------------------------------------------------------------------ */
+
+  /*
+    PAGE TITLE
+
+    FAITH
+    FITNESS
+    TAKE UP YOUR CROSS
+
+    Strong structural title used inside the application.
+  */
+
+  --type-page-title-size: var(--text-display);
+  --type-page-title-weight: 650;
+  --type-page-title-line-height: 0.98;
+  --type-page-title-letter-spacing: -0.035em;
+
+
+  /*
+    EDITORIAL TITLE
+
+    Used for quieter reflective moments such as:
+
+    What has been entrusted to you?
+
+    Intentionally lighter than an application page title.
+  */
+
+  --type-editorial-title-size:
+    clamp(2.15rem, 1.75rem + 2vw, 3.5rem);
+
+  --type-editorial-title-weight: 400;
+  --type-editorial-title-line-height: 1.06;
+  --type-editorial-title-letter-spacing: -0.035em;
+
+
+  /*
+    BODY
+
+    Primary prose that carries meaningful content.
+  */
+
+  --type-body-size: var(--text-base);
+  --type-body-line-height: 1.6;
+
+
+  /*
+    SUPPORTING
+
+    Explanatory text subordinate to primary content.
+  */
+
+  --type-supporting-size: var(--text-base);
+  --type-supporting-line-height: 1.6;
+
+
+  /*
+    SECONDARY
+
+    Quiet instructions, metadata and supporting detail.
+  */
+
+  --type-secondary-size: var(--text-sm);
+  --type-secondary-line-height: 1.55;
+
+
+  /*
+    EYEBROW / LABEL
+
+    YOUR CROSSES
+    BEGIN HERE
+    section labels
+  */
+
+  --type-eyebrow-size: var(--text-xs);
+  --type-eyebrow-weight: 650;
+  --type-eyebrow-line-height: 1.2;
+  --type-eyebrow-letter-spacing: 0.18em;
+
+
+  /*
+    ACTION
+
+    Buttons and navigational calls to action.
+  */
+
+  --type-action-size: var(--text-sm);
+  --type-action-weight: 600;
+  --type-action-line-height: 1.2;
+  --type-action-letter-spacing: 0.06em;
+
+
+  /*
+    SCRIPTURE
+
+    The deliberate serif exception within FOURTOLD.
+  */
+
+  --type-scripture-size: var(--text-lg);
+  --type-scripture-weight: 400;
+  --type-scripture-line-height: 1.65;
+
+
+  /* ------------------------------------------------------------------------
+     Spacing
+     ------------------------------------------------------------------------ */
+
+  --space-page:
+    clamp(1.25rem, 3.5vw, 3.5rem);
+
+  --space-section:
+    clamp(2rem, 5vw, 4.5rem);
+
+
+  /* ------------------------------------------------------------------------
+     Shared application geometry
+     ------------------------------------------------------------------------ */
+
   --app-max-width: 48rem;
-  --app-gutter: clamp(1.25rem, 4vw, 1.5rem);
+
+  --app-gutter:
+    clamp(1.25rem, 4vw, 1.5rem);
+
   --nav-height: 4.5rem;
+
+
+  /* ------------------------------------------------------------------------
+     Document defaults
+     ------------------------------------------------------------------------ */
+
+  color: var(--white);
+  background: var(--black);
 }

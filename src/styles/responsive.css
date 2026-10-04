@@ -40,8 +40,15 @@
   }
 
   .onboarding-hint {
-    bottom: calc(var(--nav-height) + max(2rem, env(safe-area-inset-bottom)));
-    width: min(calc(100% - 2rem), 24rem);
+    bottom: calc(
+      var(--nav-height) +
+      max(2rem, env(safe-area-inset-bottom))
+    );
+
+    width: calc(
+      min(100%, var(--app-max-width)) -
+      (var(--app-gutter) * 2)
+    );
   }
 
   .onboarding-add-hint {

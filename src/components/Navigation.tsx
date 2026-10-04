@@ -74,7 +74,7 @@ function Navigation() {
     localStorage's native "storage" event does not fire
     in the same browser tab that made the change.
 
-    FOUR†OLD therefore uses a small custom event so the
+    FOURTOLD therefore uses a small custom event so the
     navigation can react immediately when Crosses change.
   */
   useEffect(() => {
@@ -121,15 +121,6 @@ function Navigation() {
     !hasAnyCrosses &&
     !pillarHintDismissed
 
-  function pillarHasCross(
-    pillar: Pillar
-  ) {
-    return crosses.some(
-      (cross) =>
-        cross.pillar === pillar
-    )
-  }
-
   function handlePillarClick() {
     if (
       !onboardingComplete &&
@@ -142,40 +133,18 @@ function Navigation() {
   function renderPillar(
     pillar: (typeof pillars)[number]
   ) {
-    const hasCross =
-      pillarHasCross(pillar.key)
-
     return (
       <NavLink
         key={pillar.key}
         to={pillar.path}
         onClick={handlePillarClick}
-        className={`${
-          hasCross
-            ? ''
-            : 'pillar-needs-cross'
-        } ${
+        className={
           showPillarHint
             ? 'onboarding-pillar'
             : ''
-        }`}
+        }
       >
-        <span className="pillar-nav-content">
-          <span>
-            {pillar.label}
-          </span>
-
-          <span
-            className={`pillar-add-indicator ${
-              hasCross
-                ? 'is-complete'
-                : ''
-            }`}
-            aria-hidden="true"
-          >
-            +
-          </span>
-        </span>
+        {pillar.label}
       </NavLink>
     )
   }
@@ -192,9 +161,9 @@ function Navigation() {
           </p>
 
           <p className="onboarding-message">
-            Choose a pillar below.
+            Choose at least one of the four pillars below
             <br />
-            Add a Cross you will carry.
+            and add a Cross you will carry.
           </p>
         </aside>
       )}
