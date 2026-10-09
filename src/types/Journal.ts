@@ -2,6 +2,7 @@ export type JournalEntryType =
   | 'gratitude'
   | 'fruit'
   | 'struggle'
+  | 'desire'
 
 export type JournalEntry = {
   id: string
@@ -9,13 +10,6 @@ export type JournalEntry = {
   text: string
   date: string
   createdAt: string
-
-  /*
-    These give us room to connect
-    Journal entries to FOUR†OLD's
-    larger system later without
-    changing the basic Journal model.
-  */
   pillar?: string
   crossIds?: string[]
 }

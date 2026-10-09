@@ -40,9 +40,10 @@
   --dim: #7e7a72;
 
   /* FOURTOLD bronze — identity, interaction and emphasis */
- --bronze: #c3ad83;
---bronze-bright: #d1bd94;
---bronze-muted: #8f8779;
+  --bronze: #c3ad83;
+  --bronze-rgb: 195 173 131;
+  --bronze-bright: #d1bd94;
+  --bronze-muted: #8f8779;
 
   /* Borders and dividers */
   --line: rgba(241, 238, 230, 0.12);
@@ -201,6 +202,13 @@
     clamp(1.25rem, 4vw, 1.5rem);
 
   --nav-height: 4.5rem;
+
+  /* Shared page layout; change these once for every screen. */
+  --header-height: 4.5rem;
+  --page-top: clamp(5.5rem, 12vw, 7rem);
+  --page-bottom: calc(var(--nav-height) + max(2.5rem, env(safe-area-inset-bottom)));
+  --page-fade-duration: 0.9s;
+  --editorial-content-width: 35rem;
 
 
   /* ------------------------------------------------------------------------

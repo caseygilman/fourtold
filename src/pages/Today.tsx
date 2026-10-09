@@ -26,9 +26,13 @@ import {
 
   addJournalEntry,
 
+  loadJournal,
+
   updateJournalEntry,
 
-} from '../utils/journalStorage'
+  JOURNAL_UPDATED_EVENT,
+
+} from '../utils/journalStorage.ts'
 
 
 
@@ -329,6 +333,32 @@ function Today() {
     )
 
 
+
+  // When returning from Journal, read the linked entry as the source of truth.
+  useEffect(() => {
+    const refreshLinkedGratitude = () => {
+      const saved = localStorage.getItem(walkStorageKey)
+      if (!saved) return
+      try {
+        const stored = JSON.parse(saved) as DailyWalk
+        const linked = stored.gratitudeJournalEntryId
+          ? loadJournal().find(entry => entry.id === stored.gratitudeJournalEntryId)
+          : undefined
+        if (linked && linked.text !== stored.gratitude) {
+          const updated = { ...stored, gratitude: linked.text }
+          localStorage.setItem(walkStorageKey, JSON.stringify(updated))
+          setWalk(updated)
+          setGratitudeText(linked.text)
+        }
+      } catch {
+        // Leave the existing Walk untouched if saved data is malformed.
+      }
+    }
+
+    refreshLinkedGratitude()
+    window.addEventListener(JOURNAL_UPDATED_EVENT, refreshLinkedGratitude)
+    return () => window.removeEventListener(JOURNAL_UPDATED_EVENT, refreshLinkedGratitude)
+  }, [walkStorageKey])
 
   const [
 
@@ -933,140 +963,39 @@ function Today() {
 
 
   function saveGratitude() {
+    const text = gratitudeText.trim()
+    if (!text || !walk) return
 
-    const trimmedGratitude =
+    // Perform storage writes outside a React state updater. This avoids
+    // duplicate entries when React replays updater functions in development.
+    let entryId = walk.gratitudeJournalEntryId
+    const linkedEntry = entryId
+      ? loadJournal().find(entry => entry.id === entryId)
+      : undefined
 
-        gratitudeText.trim()
-
-
-
-    if (!trimmedGratitude) {
-
-        return
-
-    }
-
-
-
-    setWalk((current) => {
-
-        if (!current) {
-
-        return current
-
-        }
-
-
-
-        /*
-
-        If this gratitude already has
-
-        a Journal entry, update it
-
-        rather than creating a duplicate.
-
-        */
-
-        if (
-
-        current.gratitudeJournalEntryId
-
-        ) {
-
-        updateJournalEntry(
-
-            current.gratitudeJournalEntryId,
-
-            {
-
-            text: trimmedGratitude,
-
-            }
-
-        )
-
-
-
-        return {
-
-            ...current,
-
-            gratitude:
-
-            trimmedGratitude,
-
-        }
-
-        }
-
-
-
-        /*
-
-        First save:
-
-        create the Journal entry and
-
-        connect today's Walk to it.
-
-        */
-
-        const journalEntryId =
-
-        crypto.randomUUID()
-
-
-
-        addJournalEntry({
-
-        id: journalEntryId,
-
+    if (linkedEntry) {
+      updateJournalEntry(linkedEntry.id, { text })
+    } else {
+      entryId = crypto.randomUUID()
+      addJournalEntry({
+        id: entryId,
         type: 'gratitude',
-
-        text: trimmedGratitude,
-
-        date: current.date,
-
-        createdAt:
-
-            new Date().toISOString(),
-
-        })
-
-
-
-        return {
-
-        ...current,
-
-        gratitude:
-
-            trimmedGratitude,
-
-        gratitudeJournalEntryId:
-
-            journalEntryId,
-
-        }
-
-    })
-
-
-
-    setGratitudeText(
-
-        trimmedGratitude
-
-    )
-
-
-
-    setIsGivingThanks(false)
-
+        text,
+        date: walk.date,
+        createdAt: new Date().toISOString(),
+      })
     }
 
-
+    const updatedWalk: DailyWalk = {
+      ...walk,
+      gratitude: text,
+      gratitudeJournalEntryId: entryId,
+    }
+    localStorage.setItem(walkStorageKey, JSON.stringify(updatedWalk))
+    setWalk(updatedWalk)
+    setGratitudeText(text)
+    setIsGivingThanks(false)
+  }
 
   function cancelGratitude() {
 

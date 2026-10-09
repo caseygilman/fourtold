@@ -14,7 +14,7 @@
 
   width: 100%;
   max-width: var(--app-max-width);
-  height: 4.5rem;
+  height: var(--header-height);
 
   padding:
     env(safe-area-inset-top)

@@ -10,16 +10,7 @@
   .brand-logo {
     font-size: var(--text-display);
   }
-
-  .pillar-page {
-    padding: clamp(3.5rem, 9vw, 7rem) var(--space-page) calc(var(--nav-height) + 3.5rem);
-  }
-
-  .pillar-page > h1 {
-    font-size: var(--text-display);
-  }
-
-  .today-page > h1 {
+.today-page > h1 {
     max-width: 44rem;
     font-size: clamp(2.5rem, 1.75rem + 3vw, 4.5rem);
     line-height: 0.98;

@@ -1,28 +1,126 @@
-/* =========================================
-   JOURNAL
-   ========================================= */
-
-.journal-page {
-  width: 100%;
-  max-width: 760px;
-  margin: 0 auto;
-  padding: 46px 24px;
-  box-sizing: border-box;
-}
+/* ==========================================================================
+   Journal — mobile-first editorial page
+   ========================================================================== */
 
 .journal-header {
-  margin-bottom: 48px;
+  margin-bottom: 2rem;
+}
+
+.journal-eyebrow {
+  margin: 0 0 1.4rem;
+  color: var(--dim);
+  font-size: var(--type-eyebrow-size);
+  font-weight: var(--type-eyebrow-weight);
+  line-height: var(--type-eyebrow-line-height);
+  letter-spacing: var(--type-eyebrow-letter-spacing);
+  text-transform: uppercase;
 }
 
 .journal-page h1 {
-  margin: 0 0 18px;
+  max-width: 30rem;
+  margin: 0;
+  color: var(--white);
+  font-size: var(--type-editorial-title-size);
+  font-weight: var(--type-editorial-title-weight);
+  line-height: var(--type-editorial-title-line-height);
+  letter-spacing: var(--type-editorial-title-letter-spacing);
 }
 
-.journal-page > p {
-  margin: 0;
+.journal-intro {
+  max-width: 35rem;
+  margin: 1.4rem 0 0;
+  color: var(--muted);
+  font-size: var(--type-supporting-size);
+  line-height: var(--type-supporting-line-height);
 }
 
 .journal-entry {
   padding: 28px 0;
   border-top: 1px solid var(--line);
 }
+
+
+
+/* Scoped additions: existing FOUR†OLD journal styles remain in place. */
+.journal-experience .journal-categories {
+  display: flex;
+  gap: .5rem;
+  flex-wrap: wrap;
+  margin: 1.5rem 0;
+}
+.journal-experience .journal-categories button {
+  border: 1px solid rgb(var(--bronze-rgb) / .45);
+  border-radius: 999px;
+  background: transparent;
+  color: inherit;
+  padding: .65rem .85rem;
+  cursor: pointer;
+  font: inherit;
+  font-size: .8rem;
+}
+.journal-experience .journal-categories button.is-active {
+  border-color: var(--bronze);
+  color: var(--bronze);
+  background: rgb(var(--bronze-rgb) / .1);
+}
+.journal-experience .journal-invitations { display: grid; gap: .75rem; margin-bottom: 2rem; }
+.journal-experience .journal-invitation {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: .45rem;
+  padding: 1rem;
+  background: rgb(var(--bronze-rgb) / .055);
+  border: 1px solid rgb(var(--bronze-rgb) / .25);
+  border-radius: .75rem;
+  color: inherit;
+  cursor: pointer;
+  font: inherit;
+}
+.journal-experience .journal-invitation-title,
+.journal-experience .journal-compose-category { color: var(--bronze); font-weight: 600; }
+.journal-experience .journal-invitation-description { opacity: .8; font-size: .9rem; }
+.journal-experience .journal-invitation-action { color: var(--bronze); font-size: .82rem; margin-top: .3rem; }
+.journal-experience .journal-compose {
+  padding: 1rem;
+  margin: 1.5rem 0 2rem;
+  border: 1px solid rgb(var(--bronze-rgb) / .35);
+  border-radius: .75rem;
+}
+.journal-experience .journal-compose h2 { font-size: 1.15rem; margin: .75rem 0 1rem; }
+.journal-experience .journal-compose textarea {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  min-height: 10rem;
+  padding: .9rem;
+  border: 1px solid rgb(var(--bronze-rgb) / .45);
+  border-radius: .5rem;
+  background: rgba(255,255,255,.04);
+  color: inherit;
+  font: inherit;
+  resize: vertical;
+}
+.journal-experience .journal-compose-actions { display: flex; flex-wrap: wrap; gap: .75rem; margin-top: 1rem; }
+.journal-experience .journal-compose-actions button,
+.journal-experience .journal-edit {
+  padding: .6rem .9rem;
+  border: 1px solid rgb(var(--bronze-rgb) / .45);
+  border-radius: .4rem;
+  color: inherit;
+  background: transparent;
+  cursor: pointer;
+  font: inherit;
+}
+.journal-experience .journal-compose-actions .journal-save { background: var(--bronze); color: #151515; }
+.journal-experience .journal-compose-actions button:disabled { opacity: .4; cursor: not-allowed; }
+.journal-experience .journal-edit { font-size: .8rem; margin-top: .75rem; }
+.journal-experience .journal-history { margin-top: 1.75rem; }
+.journal-experience .journal-history > h2 { font-size: 1rem; margin-bottom: 1rem; }
+.journal-experience .journal-visually-hidden {
+  position: absolute; width: 1px; height: 1px; overflow: hidden;
+  clip: rect(0, 0, 0, 0); white-space: nowrap;
+}
+.journal-experience button:focus-visible,
+.journal-experience textarea:focus-visible { outline: 2px solid var(--bronze); outline-offset: 3px; }

@@ -2,24 +2,6 @@
    App Pages
    ========================================================================== */
 
-.pillar-page {
-  width: 100%;
-  max-width: var(--app-max-width);
-
-  margin: 0 auto;
-
-  padding:
-    clamp(5.5rem, 12vw, 7rem)
-    var(--app-gutter)
-    calc(
-      var(--nav-height) +
-      max(2.5rem, env(safe-area-inset-bottom))
-    );
-
-  animation: pageFadeIn 0.9s ease-out both;
-}
-
-
 .pillar-page > h1 {
   max-width: 100%;
 

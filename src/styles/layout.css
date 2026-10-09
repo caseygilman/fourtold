@@ -1,7 +1,4 @@
-/* ==========================================================================
-   App Shell
-   ========================================================================== */
-
+/* FOURTOLD — shared application geometry. All screen-level layout lives here. */
 .app-shell {
   height: 100dvh;
   display: flex;
@@ -9,29 +6,33 @@
   overflow: hidden;
 }
 
-/* ==========================================================================
-   Main Content Region
-   ========================================================================== */
-
 .app-content {
   flex: 1;
   min-height: 0;
+  padding-top: calc(var(--header-height) + env(safe-area-inset-top));
   overflow-x: hidden;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
 }
-
-/* ==========================================================================
-   Bottom Navigation Region
-   ========================================================================== */
 
 .app-nav-region {
   flex-shrink: 0;
   display: flex;
   justify-content: center;
   width: 100%;
-  padding:
-    0
-    var(--app-gutter)
-    max(0.65rem, env(safe-area-inset-bottom));
+  padding: 0 var(--app-gutter) max(0.65rem, env(safe-area-inset-bottom));
+}
+
+/* Existing page classes share one container without a JSX migration. */
+:where(.home-page, .pillar-page, .journal-page) {
+  width: 100%;
+  max-width: var(--app-max-width);
+  margin-inline: auto;
+  padding: var(--page-top) var(--app-gutter) var(--page-bottom);
+  animation: pageFadeIn var(--page-fade-duration) ease-out both;
+}
+
+/* Content can be editorially narrow without moving the page's left edge. */
+.home-content {
+  width: min(100%, var(--editorial-content-width));
 }

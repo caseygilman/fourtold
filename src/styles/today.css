@@ -56,22 +56,6 @@
    Today Page
    ========================================================================== */
 
-.today-page {
-  width: min(100%, 52rem);
-}
-
-
-.today-page > h1 {
-  max-width: 100%;
-
-  font-size: var(--type-page-title-size);
-  font-weight: var(--type-page-title-weight);
-  line-height: var(--type-page-title-line-height);
-
-  letter-spacing: var(--type-page-title-letter-spacing);
-}
-
-
 /* ==========================================================================
    Today Instructions
    ========================================================================== */
